@@ -14,7 +14,7 @@ header("Access-Control-Allow-Headers: origin, x-requested-with, content-type, se
 define('VERSION',"6.0.0.3");
 
 ini_set('display_errors', '1');
-$server_environment = "local"; //local/live
+$server_environment = "live"; //local/live
 
 
 $doc= $_SERVER['DOCUMENT_ROOT'];
