@@ -1,0 +1,588 @@
+
+[{
+   "accounts": {
+      "canceldata": {},
+      "exportdata": {},
+      "importdata": {}
+      },
+      "languages": {},
+      "payments": [
+      {
+         "activate": false,
+         "label": "Activate",
+         "name": "paypal",
+         "paymentType": "online",
+         "url": "img/payment/paypal.png"
+         },
+         {
+            "activate": false,
+            "label": "Activate",
+            "name": "googlewallet",
+            "paymentType": "online",
+            "url": "img/payment/googlewallet.png"
+            },
+            {
+               "activate": false,
+               "label": "Activate",
+               "name": "stripe",
+               "paymentType": "online",
+               "url": "img/payment/stripe.png"
+               },
+               {
+                  "activate": false,
+                  "label": "Activate",
+                  "name": "2checkout",
+                  "paymentType": "online",
+                  "url": "img/payment/2checkout.png"
+                  },
+                  {
+                     "activate": false,
+                     "label": "Activate",
+                     "name": "authroizenet",
+                     "paymentType": "online",
+                     "url": "img/payment/authroizenet.png"
+                     },
+                     {
+                        "activate": false,
+                        "label": "Activate",
+                        "name": "worldpay",
+                        "paymentType": "online",
+                        "url": "img/payment/worldpay.png"
+                     }
+                     ],
+                     "preference": {
+                        "contactpref": {
+                           "appName": "contact",
+                           "customerCusFiel": [],
+                           "supplierCusFiel": []
+                           },
+                           "creditNotepref": {
+                              "creditNotePrefix":"CN",
+                              "CusFiel": [],
+                              "allowPartialPayments": true,
+                              "appName": "creditNote",
+                              "enableDisscounts": true
+                              },
+                              "estimatepref": {
+                                 "estimatePrefix":"EST",
+                                 "CusFiel": [],
+                                 "allowPartialPayments": true,
+                                 "appName": "estimate",
+                                 "copyadminforallestimate": true,
+                                 "displayshiptoaddressestimate": false,
+                                 "emailcustomeruponsavingestimate": false,
+                                 "enableDisscounts": true,
+                                 "includeproductbrochurescustomeremail": true,
+                                 "nofifyadminwhenviewedOraccepted": true,
+                                 "sendpdfestimateAsattachment": true
+                                 },
+                                 "expensepref": {
+                                    "CusFiel": [],
+                                    "appName": "expense",
+                                    "billingexpensesincludetax": true,
+                                    "expensecategories": [
+                                    {
+                                       "activate": true,
+                                       "category": "Advertising"
+                                       },
+                                       {
+                                          "activate": true,
+                                          "category": "Petrol"
+                                          },
+                                          {
+                                             "activate": true,
+                                             "category": "Fuel"
+                                          }
+                                          ]
+                                          },
+                                          "inventorypref": {
+                                             "IssueCusFiel": [],
+                                             "ReciptCusFiel": [],
+                                             "appName": "inventory"
+                                             },
+                                             "invoicepref": {
+                                                "CheckedOfflinePayments": false,
+                                                "CusFiel": [],
+                                                "ReminderDays": "",
+                                                "addstockcancelOrdeleteinvoiceincluCreditnote": true,
+                                                "allowPartialPayments": true,
+                                                "appName": "invoice",
+                                                "billdateindays": "",
+                                                "copyadminallinvoices": true,
+                                                "defaultComm": "",
+                                                "defaultNote": "",
+                                                "displayshipaddress": false,
+                                                "disscountItemsOption": "",
+                                                "emailcontent": {
+                                                   "emailBody": "Dear Customer,u003c/bru003e Attached invoice No.{{no}}. To pay online or download click on the below link :{{accounturl}} u003c/bru003e Thank You for your business! u003c/bru003e {{companyName}}"
+                                                   },
+                                                   "emailcustomeruponsavinginvoice": false,
+                                                   "enableDisscounts": true,
+                                                   "enableTaxes": true,
+                                                   "enableremindersoverdueinvoices": true,
+                                                   "enableshipping": true,
+                                                   "enabletnkuemailforrecipt": true,
+                                                   "includeaccountstatementwithinvoice": true,
+                                                   "invoicePrefix": "IVN",
+                                                   "notifyadminwheninvoiceviewed": true,
+                                                   "pdfinvoiceattachment": true,
+                                                   "recurringInvoiceDefultAction": ""
+                                                   },
+                                                   "paymentpref": {
+                                                      "CusFiel": [],
+                                                      "PaymentMethod": [
+                                                      {
+                                                         "activate": true,
+                                                         "paymentType": "Offline",
+                                                         "paymentmethod": "Cash"
+                                                         },
+                                                         {
+                                                            "activate": true,
+                                                            "paymentType": "Offline",
+                                                            "paymentmethod": "Cheque"
+                                                            },
+                                                            {
+                                                               "activate": true,
+                                                               "paymentType": "Offline",
+                                                               "paymentmethod": "TT"
+                                                               },
+                                                               {
+                                                                  "activate": true,
+                                                                  "paymentType": "Offline",
+                                                                  "paymentmethod": "Bank Transfer"
+                                                                  },
+                                                                  {
+                                                                     "activate": true,
+                                                                     "paymentType": "Offline",
+                                                                     "paymentmethod": "Bank Draft"
+                                                                  }
+                                                                  ],
+                                                                  "appName": "payment"
+                                                                  },
+                                                                  "productpref": {
+                                                                     "CusFiel": [],
+                                                                     "Productbrands": [],
+                                                                     "Productcategories": [],
+                                                                     "appName": "product",
+                                                                     "units": [
+                                                                     {
+                                                                        "activate": true,
+                                                                        "unitsOfMeasurement": "each"
+                                                                     }
+                                                                     ]
+                                                                     },
+                                                                     "project": {
+                                                                        "appName": "project",
+                                                                        "task": []
+                                                                     }
+                                                                     },
+                                                                     "profile": {
+                                                                        "CusFiel": []
+                                                                        },
+                                                                        "taxes": {
+                                                                           "individualtaxes": [
+                                                                           {
+                                                                              "activate": true,
+                                                                              "compound": false,
+                                                                              "id": 0.001,
+                                                                              "labelIndividualTaxStatus": "Inactivate",
+                                                                              "positionID": "",
+                                                                              "rate": "0",
+                                                                              "taxName": "default",
+                                                                              "type": "individualtaxes"
+                                                                           }
+                                                                           ],
+                                                                           "multipletaxgroup": []
+                                                                           },
+                                                                           "templates": {
+                                                                              "image": []
+                                                                              },
+                                                                              "uniqueRecord": "35",
+                                                                              "upgrades": {},
+                                                                              "users": {
+                                                                                 "roles": [
+                                                                                 {
+                                                                                    "appPermission": [
+                                                                                    {
+                                                                                       "add": true,
+                                                                                       "appName": "invoice",
+                                                                                       "cancel": true,
+                                                                                       "deletee": true,
+                                                                                       "edit": true,
+                                                                                       "view": true
+                                                                                       },
+                                                                                       {
+                                                                                          "add": true,
+                                                                                          "appName": "Recurring",
+                                                                                          "cancel": true,
+                                                                                          "delete": true,
+                                                                                          "edit": true,
+                                                                                          "view": true
+                                                                                          },
+                                                                                          {
+                                                                                             "add": true,
+                                                                                             "appName": "Estimate",
+                                                                                             "cancel": true,
+                                                                                             "delete": true,
+                                                                                             "edit": true,
+                                                                                             "view": true
+                                                                                             },
+                                                                                             {
+                                                                                                "add": true,
+                                                                                                "appName": "Credit Notes",
+                                                                                                "cancel": true,
+                                                                                                "delete": true,
+                                                                                                "edit": true,
+                                                                                                "view": true
+                                                                                                },
+                                                                                                {
+                                                                                                   "add": true,
+                                                                                                   "appName": "Payments",
+                                                                                                   "cancel": true,
+                                                                                                   "delete": true,
+                                                                                                   "edit": true,
+                                                                                                   "view": true
+                                                                                                   },
+                                                                                                   {
+                                                                                                      "add": true,
+                                                                                                      "appName": "Expenses",
+                                                                                                      "cancel": true,
+                                                                                                      "delete": true,
+                                                                                                      "edit": true,
+                                                                                                      "view": true
+                                                                                                      },
+                                                                                                      {
+                                                                                                         "add": false,
+                                                                                                         "appName": "Product",
+                                                                                                         "cancel": true,
+                                                                                                         "delete": true,
+                                                                                                         "edit": true,
+                                                                                                         "view": true
+                                                                                                         },
+                                                                                                         {
+                                                                                                            "add": false,
+                                                                                                            "appName": "Inventory Receipts",
+                                                                                                            "cancel": true,
+                                                                                                            "delete": true,
+                                                                                                            "edit": true,
+                                                                                                            "view": true
+                                                                                                            },
+                                                                                                            {
+                                                                                                               "add": false,
+                                                                                                               "appName": "Inventory Receipts",
+                                                                                                               "cancel": true,
+                                                                                                               "delete": true,
+                                                                                                               "edit": true,
+                                                                                                               "view": true
+                                                                                                               },
+                                                                                                               {
+                                                                                                                  "add": false,
+                                                                                                                  "appName": "Project",
+                                                                                                                  "cancel": true,
+                                                                                                                  "delete": true,
+                                                                                                                  "edit": true,
+                                                                                                                  "view": true
+                                                                                                                  },
+                                                                                                                  {
+                                                                                                                     "add": false,
+                                                                                                                     "appName": "TimeSheets",
+                                                                                                                     "cancel": true,
+                                                                                                                     "delete": true,
+                                                                                                                     "edit": true,
+                                                                                                                     "view": true
+                                                                                                                     },
+                                                                                                                     {
+                                                                                                                        "add": false,
+                                                                                                                        "appName": "Contacts Customer",
+                                                                                                                        "cancel": true,
+                                                                                                                        "delete": true,
+                                                                                                                        "edit": true,
+                                                                                                                        "view": true
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                           "add": false,
+                                                                                                                           "appName": "Contacts Suppliers",
+                                                                                                                           "cancel": true,
+                                                                                                                           "delete": true,
+                                                                                                                           "edit": true,
+                                                                                                                           "view": true
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                              "add": false,
+                                                                                                                              "appName": "360 View",
+                                                                                                                              "cancel": true,
+                                                                                                                              "delete": true,
+                                                                                                                              "edit": true,
+                                                                                                                              "view": true
+                                                                                                                              },
+                                                                                                                              {
+                                                                                                                                 "add": false,
+                                                                                                                                 "appName": "Reports",
+                                                                                                                                 "cancel": true,
+                                                                                                                                 "delete": true,
+                                                                                                                                 "edit": true,
+                                                                                                                                 "view": true
+                                                                                                                              }
+                                                                                                                              ],
+                                                                                                                              "id": 1,
+                                                                                                                              "rolename": "Super admin",
+                                                                                                                              "type": "default"
+                                                                                                                              },
+                                                                                                                              {
+                                                                                                                                 "appPermission": [
+                                                                                                                                 {
+                                                                                                                                    "add": true,
+                                                                                                                                    "appName": "invoice",
+                                                                                                                                    "cancel": true,
+                                                                                                                                    "deletee": true,
+                                                                                                                                    "edit": true,
+                                                                                                                                    "view": true
+                                                                                                                                    },
+                                                                                                                                    {
+                                                                                                                                       "add": true,
+                                                                                                                                       "appName": "Recurring",
+                                                                                                                                       "cancel": true,
+                                                                                                                                       "delete": true,
+                                                                                                                                       "edit": true,
+                                                                                                                                       "view": true
+                                                                                                                                       },
+                                                                                                                                       {
+                                                                                                                                          "add": true,
+                                                                                                                                          "appName": "Estimate",
+                                                                                                                                          "cancel": true,
+                                                                                                                                          "delete": true,
+                                                                                                                                          "edit": true,
+                                                                                                                                          "view": true
+                                                                                                                                          },
+                                                                                                                                          {
+                                                                                                                                             "add": true,
+                                                                                                                                             "appName": "Credit Notes",
+                                                                                                                                             "cancel": true,
+                                                                                                                                             "delete": true,
+                                                                                                                                             "edit": true,
+                                                                                                                                             "view": true
+                                                                                                                                             },
+                                                                                                                                             {
+                                                                                                                                                "add": true,
+                                                                                                                                                "appName": "Payments",
+                                                                                                                                                "cancel": true,
+                                                                                                                                                "delete": true,
+                                                                                                                                                "edit": true,
+                                                                                                                                                "view": true
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                   "add": true,
+                                                                                                                                                   "appName": "Expenses",
+                                                                                                                                                   "cancel": true,
+                                                                                                                                                   "delete": true,
+                                                                                                                                                   "edit": true,
+                                                                                                                                                   "view": true
+                                                                                                                                                   },
+                                                                                                                                                   {
+                                                                                                                                                      "add": false,
+                                                                                                                                                      "appName": "Product",
+                                                                                                                                                      "cancel": true,
+                                                                                                                                                      "delete": true,
+                                                                                                                                                      "edit": true,
+                                                                                                                                                      "view": true
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                         "add": false,
+                                                                                                                                                         "appName": "Inventory Receipts",
+                                                                                                                                                         "cancel": true,
+                                                                                                                                                         "delete": true,
+                                                                                                                                                         "edit": true,
+                                                                                                                                                         "view": true
+                                                                                                                                                         },
+                                                                                                                                                         {
+                                                                                                                                                            "add": false,
+                                                                                                                                                            "appName": "Inventory Receipts",
+                                                                                                                                                            "cancel": true,
+                                                                                                                                                            "delete": true,
+                                                                                                                                                            "edit": true,
+                                                                                                                                                            "view": true
+                                                                                                                                                            },
+                                                                                                                                                            {
+                                                                                                                                                               "add": false,
+                                                                                                                                                               "appName": "Project",
+                                                                                                                                                               "cancel": true,
+                                                                                                                                                               "delete": true,
+                                                                                                                                                               "edit": true,
+                                                                                                                                                               "view": true
+                                                                                                                                                               },
+                                                                                                                                                               {
+                                                                                                                                                                  "add": false,
+                                                                                                                                                                  "appName": "TimeSheets",
+                                                                                                                                                                  "cancel": true,
+                                                                                                                                                                  "delete": true,
+                                                                                                                                                                  "edit": true,
+                                                                                                                                                                  "view": true
+                                                                                                                                                                  },
+                                                                                                                                                                  {
+                                                                                                                                                                     "add": false,
+                                                                                                                                                                     "appName": "Contacts Customer",
+                                                                                                                                                                     "cancel": true,
+                                                                                                                                                                     "delete": true,
+                                                                                                                                                                     "edit": true,
+                                                                                                                                                                     "view": true
+                                                                                                                                                                     },
+                                                                                                                                                                     {
+                                                                                                                                                                        "add": false,
+                                                                                                                                                                        "appName": "Contacts Suppliers",
+                                                                                                                                                                        "cancel": true,
+                                                                                                                                                                        "delete": true,
+                                                                                                                                                                        "edit": true,
+                                                                                                                                                                        "view": true
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                           "add": false,
+                                                                                                                                                                           "appName": "360 View",
+                                                                                                                                                                           "cancel": true,
+                                                                                                                                                                           "delete": true,
+                                                                                                                                                                           "edit": true,
+                                                                                                                                                                           "view": true
+                                                                                                                                                                           },
+                                                                                                                                                                           {
+                                                                                                                                                                              "add": false,
+                                                                                                                                                                              "appName": "Reports",
+                                                                                                                                                                              "cancel": true,
+                                                                                                                                                                              "delete": true,
+                                                                                                                                                                              "edit": true,
+                                                                                                                                                                              "view": true
+                                                                                                                                                                           }
+                                                                                                                                                                           ],
+                                                                                                                                                                           "id": 2,
+                                                                                                                                                                           "rolename": "Manager",
+                                                                                                                                                                           "type": "default"
+                                                                                                                                                                           },
+                                                                                                                                                                           {
+                                                                                                                                                                              "appPermission": [
+                                                                                                                                                                              {
+                                                                                                                                                                                 "add": true,
+                                                                                                                                                                                 "appName": "invoice",
+                                                                                                                                                                                 "cancel": true,
+                                                                                                                                                                                 "deletee": true,
+                                                                                                                                                                                 "edit": true,
+                                                                                                                                                                                 "view": true
+                                                                                                                                                                                 },
+                                                                                                                                                                                 {
+                                                                                                                                                                                    "add": true,
+                                                                                                                                                                                    "appName": "Recurring",
+                                                                                                                                                                                    "cancel": true,
+                                                                                                                                                                                    "delete": true,
+                                                                                                                                                                                    "edit": true,
+                                                                                                                                                                                    "view": true
+                                                                                                                                                                                    },
+                                                                                                                                                                                    {
+                                                                                                                                                                                       "add": true,
+                                                                                                                                                                                       "appName": "Estimate",
+                                                                                                                                                                                       "cancel": true,
+                                                                                                                                                                                       "delete": true,
+                                                                                                                                                                                       "edit": true,
+                                                                                                                                                                                       "view": true
+                                                                                                                                                                                       },
+                                                                                                                                                                                       {
+                                                                                                                                                                                          "add": true,
+                                                                                                                                                                                          "appName": "Credit Notes",
+                                                                                                                                                                                          "cancel": true,
+                                                                                                                                                                                          "delete": true,
+                                                                                                                                                                                          "edit": true,
+                                                                                                                                                                                          "view": true
+                                                                                                                                                                                          },
+                                                                                                                                                                                          {
+                                                                                                                                                                                             "add": true,
+                                                                                                                                                                                             "appName": "Payments",
+                                                                                                                                                                                             "cancel": true,
+                                                                                                                                                                                             "delete": true,
+                                                                                                                                                                                             "edit": true,
+                                                                                                                                                                                             "view": true
+                                                                                                                                                                                             },
+                                                                                                                                                                                             {
+                                                                                                                                                                                                "add": true,
+                                                                                                                                                                                                "appName": "Expenses",
+                                                                                                                                                                                                "cancel": true,
+                                                                                                                                                                                                "delete": true,
+                                                                                                                                                                                                "edit": true,
+                                                                                                                                                                                                "view": true
+                                                                                                                                                                                                },
+                                                                                                                                                                                                {
+                                                                                                                                                                                                   "add": false,
+                                                                                                                                                                                                   "appName": "Product",
+                                                                                                                                                                                                   "cancel": true,
+                                                                                                                                                                                                   "delete": true,
+                                                                                                                                                                                                   "edit": true,
+                                                                                                                                                                                                   "view": true
+                                                                                                                                                                                                   },
+                                                                                                                                                                                                   {
+                                                                                                                                                                                                      "add": false,
+                                                                                                                                                                                                      "appName": "Inventory Receipts",
+                                                                                                                                                                                                      "cancel": true,
+                                                                                                                                                                                                      "delete": true,
+                                                                                                                                                                                                      "edit": true,
+                                                                                                                                                                                                      "view": true
+                                                                                                                                                                                                      },
+                                                                                                                                                                                                      {
+                                                                                                                                                                                                         "add": false,
+                                                                                                                                                                                                         "appName": "Inventory Receipts",
+                                                                                                                                                                                                         "cancel": true,
+                                                                                                                                                                                                         "delete": true,
+                                                                                                                                                                                                         "edit": true,
+                                                                                                                                                                                                         "view": true
+                                                                                                                                                                                                         },
+                                                                                                                                                                                                         {
+                                                                                                                                                                                                            "add": false,
+                                                                                                                                                                                                            "appName": "Project",
+                                                                                                                                                                                                            "cancel": true,
+                                                                                                                                                                                                            "delete": true,
+                                                                                                                                                                                                            "edit": true,
+                                                                                                                                                                                                            "view": true
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                               "add": false,
+                                                                                                                                                                                                               "appName": "TimeSheets",
+                                                                                                                                                                                                               "cancel": true,
+                                                                                                                                                                                                               "delete": true,
+                                                                                                                                                                                                               "edit": true,
+                                                                                                                                                                                                               "view": true
+                                                                                                                                                                                                               },
+                                                                                                                                                                                                               {
+                                                                                                                                                                                                                  "add": false,
+                                                                                                                                                                                                                  "appName": "Contacts Customer",
+                                                                                                                                                                                                                  "cancel": true,
+                                                                                                                                                                                                                  "delete": true,
+                                                                                                                                                                                                                  "edit": true,
+                                                                                                                                                                                                                  "view": true
+                                                                                                                                                                                                                  },
+                                                                                                                                                                                                                  {
+                                                                                                                                                                                                                     "add": false,
+                                                                                                                                                                                                                     "appName": "Contacts Suppliers",
+                                                                                                                                                                                                                     "cancel": true,
+                                                                                                                                                                                                                     "delete": true,
+                                                                                                                                                                                                                     "edit": true,
+                                                                                                                                                                                                                     "view": true
+                                                                                                                                                                                                                     },
+                                                                                                                                                                                                                     {
+                                                                                                                                                                                                                        "add": false,
+                                                                                                                                                                                                                        "appName": "360 View",
+                                                                                                                                                                                                                        "cancel": false,
+                                                                                                                                                                                                                        "delete": false,
+                                                                                                                                                                                                                        "edit": true,
+                                                                                                                                                                                                                        "view": false
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                           "add": false,
+                                                                                                                                                                                                                           "appName": "Reports",
+                                                                                                                                                                                                                           "cancel": false,
+                                                                                                                                                                                                                           "delete": true,
+                                                                                                                                                                                                                           "edit": true,
+                                                                                                                                                                                                                           "view": false
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                        ],
+                                                                                                                                                                                                                        "id": 3,
+                                                                                                                                                                                                                        "rolename": "User",
+                                                                                                                                                                                                                        "type": "default"
+                                                                                                                                                                                                                     }
+                                                                                                                                                                                                                     ],
+                                                                                                                                                                                                                     "user": {}
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                  }]

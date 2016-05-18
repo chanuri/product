@@ -1,0 +1,58 @@
+<md-dialog aria-label="Mango (Fruit)" style="width:800px;">
+<div class="card-container" style="padding:20px; overflow-y:auto; overflow-x:hidden;">
+	<form name="editForm" style="width:100%;" novalidate>
+		<md-content flex>
+		<div layout="row" style="margin-left:9px; width:750px;">
+			<div flex="5">
+				<img src="img/material alperbert/avatar_tile_e_28.png" style="border-radius:20px"/>
+			</div>
+			<div flex layout="row" layout-align="start center">
+				<label style="font-weight:700">Edit Multiple Tax Groups</label>
+			</div>
+		</div>
+
+		<div layout layout-sm="column" layout-margin style="margin-top:30px;">
+			<md-input-container flex md-no-float>
+			<input ng-model="Settings12thdoor.taxname" placeholder="Multiple Tax Groups Name" ng-disabled="true" required>
+		</md-input-container>
+
+		<md-input-container flex md-no-float>
+		<md-select ng-model="taxName" placeholder="Select Individual Taxes" ng-change="selectedtaxe(taxName)" required>
+		<md-option ng-repeat="indi in $root.Settings12thdoor.taxes.individualtaxes" value="{{indi}}">{{indi.taxname}}</md-option>
+	</md-select>
+</md-input-container>
+</div>
+
+<ul as-sortable="sortableOptions" style="width:20%" ng-model="Settings12thdoor.individualtaxes">
+	<li ng-repeat="item in Settings12thdoor.individualtaxes" as-sortable-item>
+		<div style="margin-left:-33px;" class="add-mdcard" as-sortable-item-handle>
+			<div layout="row" layout-align="start center" layout-sm="column" style="height:10px; margin-top: 10px; margin-bottom: 10px; padding: 5px;">
+				<md-list>
+				<md-list-item>
+				<div flex ng-drag="changeindex($index)">
+					<span style="color:#808080;font-size:15px;">{{item.taxname}}({{item.rate}}%)
+					</span>
+				</div>
+				<div flex="5">
+					<span><md-icon ng-click="deleteselecttax(item, $index)" style="color:#A5A0A0" md-svg-src="img/ic_close_24px.svg" aria-label="Insert Drive Icon"></md-icon></span>
+				</div>
+			</md-list-item>
+		</md-list>
+	</div>
+</div>
+</li>
+</ul>
+
+</md-content>
+</form>
+</div>
+<div class="md-actions" layout="row">
+	<span flex></span>
+	<md-button ng-click="cancel()" style="margin-right:20px;" >
+	Cancel
+</md-button>
+<md-button ng-click="submit(Settings12thdoor)" ng-disabled="editForm.$invalid" >
+Add
+</md-button>
+</div>
+</md-dialog>

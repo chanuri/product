@@ -1,0 +1,353 @@
+<div>
+	<form id="form" name="editForm" ng-submit="submit()" style="box-shadow:0 5px 5px -3px rgba(0,0,0,.14),0 8px 10px 1px rgba(0,0,0,.098),0 3px 14px 2px rgba(0,0,0,.084)" >
+		<md-content style="overflow:hidden;">
+		<md-divider></md-divider>
+		<md-list style="margin-top: 20px; margin-bottom: 20px;">
+		<div layout="row" style="margin-left:9px;width:750px;">
+			<div flex="5"><img src="/img/material_alperbert/avatar_tile_a_28.png" style="border-radius:20px"></div>
+			<div flex layout="row" layout-align="start center">
+				<label style="font-weight:700">Account Owner Details</label>
+			</div>
+		</div>
+		<md-list-item>
+		<div layout-gt-sm="column" flex>
+			<p>Account Owner</p>
+			<p style="margin-top: -15px; color: rgba(0,0,0,0.54); font-size:13px;">To update your name or email address. please edit your personal profile</p>
+		</div>
+		<md-input-container md-no-float class="md-block" flex="40">
+		<input ng-model="$root.Settings12thdoor.profile.accountOwner" ng-disabled="true" placeholder="Account Owner">
+	</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<div layout-gt-sm="column" flex>
+	<p>Your Email</p>
+	<p style="margin-top: -15px; color: rgba(0,0,0,0.54); font-size:13px;">To update your name or email address. please edit your personal profile</p>
+</div>
+<md-input-container md-no-float class="md-block" flex="40">
+<input name="adminEmail" ng-model="$root.Settings12thdoor.profile.adminEmail" placeholder="Your Email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+<div ng-messages="editForm.adminEmail.$error" role="alert">
+	<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+		Your email must be between 10 and 100 characters long and look like an e-mail address.
+	</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item class="secondary-button-padding">
+<div layout-gt-sm="column" flex>
+	<p>Account Url</p>
+</div>
+<div flex="40">
+	<md-input-container md-no-float class="md-block" flex-gt-sm>
+	<input type="text" ng-model="$root.Settings12thdoor.profile.accountUrl" ng-disabled="true" placeholder="Account Url">
+</md-input-container>
+<md-button class="md-primary md-secondary" style="font-size:12px;" ng-click="changeUrl($event)">
+Change
+</md-button>
+</div>
+</md-list-item>
+
+<md-divider></md-divider>
+
+<div layout="row" style="margin-left:9px;width:750px; margin-top:20px;">
+	<div flex="5"><img src="/img/material_alperbert/avatar_tile_c_28.png" style="border-radius:20px"></div>
+	<div flex layout="row" layout-align="start center">
+		<label style="font-weight:700">Company Information</label>
+	</div>
+</div>
+
+<md-list-item>
+<p>Company Name</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input type="text" name="companyName" ng-model="$root.Settings12thdoor.profile.companyName" placeholder="Company Name" required>
+<div ng-messages="editForm.companyName.$error">
+	<div ng-message="required">This is required.</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Street</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input type="text" name="street" ng-model="$root.Settings12thdoor.profile.street" placeholder="Street" required>
+<div ng-messages="editForm.street.$error">
+	<div ng-message="required">This is required.</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>City</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input name="city" ng-model="$root.Settings12thdoor.profile.city" placeholder="City" required>
+<div ng-messages="editForm.city.$error">
+	<div ng-message="required">This is required.</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>State</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input name="state" ng-model="$root.Settings12thdoor.profile.state" placeholder="State" required>
+<div ng-messages="editForm.state.$error">
+	<div ng-message="required">This is required.</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Zip</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input name="zip" ng-model="$root.Settings12thdoor.profile.zip" placeholder="Zip" required>
+<div ng-messages="editForm.zip.$error">
+	<div ng-message="required">This is required.</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Country</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select ng-model="$root.Settings12thdoor.profile.country" placeholder="Country" >
+<md-option ng-repeat="c in country" value="">{{state.abbrev}}</md-option>
+</md-select>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Phone Number</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input type="text" name="phoneNo" ng-model="$root.Settings12thdoor.profile.phoneNo" placeholder="Phone Number" ng-pattern="/\d{3}\d{3}\d{4}/" maxlength="10" required>
+<div ng-messages="editForm.phoneNo.$error">
+	<div ng-message-exp="['required', 'maxlength' , 'pattern']">
+		Invalid Phone Number
+	</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Fax</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input type="text" ng-model="$root.Settings12thdoor.profile.fax" placeholder="Fax">
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Company Email</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input type="text" name="companyEmail" ng-model="$root.Settings12thdoor.profile.companyEmail" placeholder="Company Email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+<!-- placeholder="Will display on invoices, estimates etc.." -->
+<div ng-messages="editForm.companyEmail.$error" role="alert">
+	<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+		Your email must be between 10 and 100 characters long and look like an e-mail address.
+	</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Website</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<input type="text" ng-model="$root.Settings12thdoor.profile.website" placeholder="Website">
+</md-input-container>
+</md-list-item>
+
+<md-divider></md-divider>
+
+
+
+<!-- <div layout-gt-sm="row" flex>
+	<p><a href="">Upload Company Logo </a> </p>
+	<div flex layout="row" layout-align="end center" ng-repeat="logo in $root.Settings12thdoor.profile.name">
+		<div><p style="color:#B5B5B5;font-size:16px;">{{logo.name}}</p></div>
+		<div><md-icon ng-click="deletelogoimage(logo, $index)" style="color:#A5A0A0" md-svg-src="img/ic_close_24px.svg" aria-label="Insert Drive Icon"></md-icon></div>
+	</div>
+</div> -->
+<md-list-item class="secondary-button-padding">
+<md-button class="md-secondary md-primary" style="left:12px; right:0px;"  ng-click="uploadImage($event)">Upload Company Logo</md-button>
+<div flex layout="row" layout-align="end center" ng-repeat="logo in $root.Settings12thdoor.profile.name">
+	<div><p style="color:#B5B5B5;font-size:16px;">{{logo.name}}</p></div>
+	<div><md-icon ng-click="deletelogoimage(logo, $index)" style="color:#A5A0A0" md-svg-src="img/ic_close_24px.svg" aria-label="Insert Drive Icon"></md-icon></div>
+</div>
+<p></p>
+</md-list-item>
+
+
+<md-divider></md-divider>
+
+<div layout="row" style="margin-left:9px;width:750px;margin-top:20px;">
+	<div flex="5"><img src="/img/material_alperbert/avatar_tile_c_28.png" style="border-radius:20px"></div>
+	<div flex layout="row" layout-align="start center">
+		<label style="font-weight:700">Custom Fields</label>
+	</div>
+</div>
+<div layout-gt-sm="column" style="padding:0px 0px 10px;">
+	<div as-sortable="sortableOptions" ng-model="asdc" flex="100">
+		<div ng-repeat="item in $root.Settings12thdoor.profile.CusFiel" as-sortable-item flex>
+			<md-card class="add-mdcard" style="padding:5px;" as-sortable-item-handle flex>
+			<md-card-content>
+			<div layout="row">
+				<div flex>
+					<span style="color:#808080;font-size:15px;">{{item.labelshown}}
+						<md-tooltip md-direction="right">Custom Fields name</md-tooltip>
+					</span>
+				</div>
+				<div flex>
+					<span style="color:#808080;font-size:15px;">{{item.type}}
+						<md-tooltip md-direction="right">Fields Type</md-tooltip>
+					</span>
+				</div>
+				<div flex>
+					<md-menu md-position-mode="target-right target" layout="row" layout-align="end end" flex-sm="100" style="margin:-16px 0px -32px;">
+					<md-button href aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+					<md-icon md-menu-origin  md-svg-src="img/ic_more_horiz_24px.svg"></md-icon>
+				</md-button>
+				<md-menu-content width="4">
+				<md-menu-item>
+				<md-button ng-click="editprofilecusFieldsrow(item , $event)">
+				<p>Edit</p>
+				<md-icon md-menu-align-target ></md-icon>
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+		<md-button ng-click="deleteprofilerow(item, $index)">
+		<p>Delete</p>
+		<md-icon md-menu-align-target ></md-icon>
+	</md-button>
+</md-menu-item>
+</md-menu-content>
+</md-menu>
+</div>
+</div>
+</md-card-content>
+</md-card>
+</div>
+</div>
+<!-- <div layout-gt-sm="row" layout-align="start start" style="padding: 10px 9px 0px;">
+	<md-button  class="md-raised" ng-click="addcusfieldsProfile($event)">
+	Add custom fields
+</md-button>
+</div> -->
+</div>
+
+<md-list-item class="secondary-button-padding" ng-click="addcusfieldsProfile($event)">
+<md-button class="md-secondary md-primary" style="left:12px; right:0px;" ng-click="addcusfieldsProfile($event)">Add custom fields</md-button>
+<p></p>
+</md-list-item>
+
+<md-divider></md-divider>
+
+<div layout="row" style="margin-left:9px;width:750px;margin-top:20px;">
+	<div flex="5"><img src="/img/material_alperbert/avatar_tile_r_28.png" style="border-radius:20px"></div>
+	<div flex layout="row" layout-align="start center">
+		<label style="font-weight:700">Regional Settings</label>
+	</div>
+</div>
+
+<md-list-item>
+<p>Base Currency</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select ng-model="$root.Settings12thdoor.profile.baseCurrency" placeholder="Base Currency">
+<md-option>USD</md-option>
+<md-option>CAD</md-option>
+</md-select>
+<!-- <div ng-messages="editForm.baseCurrency.$error">
+	<div ng-message="required">This is required.</div>
+</div> -->
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Time Zone</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select ng-model="$root.Settings12thdoor.profile.timeZone" placeholder="Time Zone">
+<md-option ng-repeat="z in zones" value="">{{state.abbrev}}</md-option>
+</md-select>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Date Format</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select ng-model="$root.Settings12thdoor.profile.dataFormat" placeholder="Date Format">
+<md-option ng-repeat="d in format" value="">{{state.abbrev}}</md-option>
+</md-select>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Currency Format</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select ng-model="$root.Settings12thdoor.profile.currencyFormat" placeholder="Currency Format">
+<md-option ng-repeat="cf in currFor" value="">{{state.abbrev}}</md-option>
+</md-select>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Decimal Places</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select ng-model="$root.Settings12thdoor.profile.decimalPlaces" placeholder="Decimal Places">
+<md-option ng-repeat="deci in decimals" value="">{{state.abbrev}}</md-option>
+</md-select>
+</md-input-container>
+</md-list-item>
+
+<md-list-item>
+<p>Paper Size</p>
+<md-input-container md-no-float class="md-block" flex="40">
+<md-select name="paperSize" ng-model="$root.Settings12thdoor.profile.paperSize" placeholder="Paper Size">
+<md-option>A4(8.27" x 11.69")</md-option>
+<md-option>letter(8.5" x 11")</md-option>
+<md-option>A3(11.69" x 16.54")</md-option>
+</md-select>
+<div ng-messages="editForm.paperSize.$error">
+	<div ng-message="required">This is required.</div>
+</div>
+</md-input-container>
+</md-list-item>
+
+</md-list>
+
+<!-- <md-divider></md-divider>
+<div layout layout-sm="column" layout-margin>
+	<div flex="5">
+		<img src="img/material alperbert/avatar_tile_a_28.png" style="margin-top:22px;border-radius:20px"/>
+	</div>
+	<div flex="20" style="margin-top:35px;">
+		<label style="font-weight:700">Appearance</label>
+	</div>
+	<div flex>
+		<md-card style="margin-top: 28px;">
+		<md-card-content style="background:#efefef; height:31px;">
+		<center style="margin-top:7px;">Theme</center>
+	</md-card-content>
+	<md-content flex style="overflow:hidden;">
+	<div layout="row" layout-align="center center" layout-sm="column" layout-margin>
+		<div flex style="border: 1px solid #efefef;"><img ng-src="img/default.png"></div>
+		<div flex style="border: 1px solid #efefef;"><img ng-src="img/color.png"></div>
+	</div>
+</md-content>
+</md-card>
+</div>
+</div> -->
+</md-content>
+</form>
+
+</div>
+
+<!-- <div class="lock-size" layout="row">
+	<md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
+	ng-class="demo.selectedMode" style="position:fixed;bottom:20px;right:20px;" ng-init="submitted=false">
+	<md-fab-trigger>
+	<md-button type="submit" form="form" aria-label="menu" class="md-fab " style="background-color:#db4437;" ng-disabled="submitted">
+	<md-icon md-svg-src="img/ic_add_24px.svg" style="width:30px;"></md-icon>
+</md-button>
+</md-fab-trigger>
+<md-fab-actions>
+</md-fab-actions>
+</md-fab-speed-dial>
+</div> -->
