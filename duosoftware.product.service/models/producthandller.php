@@ -90,7 +90,7 @@ class producthandller extends HttpResponse
 		$product->productID="-888";	  
 		
 		$rawData = $client->store()->byKeyField("productID")->andStore($product);
-		var_dump($rawData);
+		//var_dump($rawData);
 		if(($rawData->statusCode==404)) 
 		{
 			//$statusCode = 404;
@@ -378,6 +378,8 @@ class producthandller extends HttpResponse
  	public function saveToProductActivitytoOjectStore($proObj)
  	{ 			
  			$client=ObjectStoreClient::WithNamespace(DuoWorldCommon::GetHost(),$this->productActivityttb,securityToken);
+ 			//echo "Hit";
+ 			//var_dump($proObj);
  			return $client->store()->byKeyField("logID")->andStore($proObj); 		
  	}
  	

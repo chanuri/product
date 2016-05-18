@@ -163,6 +163,7 @@ class StoreModifier{
 		$res = $this->wsInvoker->post("", $req);
 		//$result=array('IsSuccess'=>false,'Message'=>'Error has occured.','ID'=>'','StatusCode'=>'404');
 		//echo $res;
+		//var_dump($res);
 		$result=new Result();
 		$result->isSuccess=false;
 		$result->message='Error has occured.';

@@ -64,7 +64,7 @@ class WsInvoker {
 		curl_setopt($ch, CURLOPT_HTTPHEADER,  $this->headerArray);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$result = curl_exec($ch);
-		
+		//echo $result;
 		if (FALSE === $result )
 			throw new Exception(curl_error($ch), curl_errno($ch));
 		//var_dump($result);
