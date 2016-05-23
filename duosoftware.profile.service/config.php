@@ -10,11 +10,10 @@
 	
 define('VERSION',"6.0.0.2");
 ini_set('display_errors', '1');
-$server_environment = "live"; //local/live
+$server_environment = "local"; //local/live
 
 
 $doc= $_SERVER['DOCUMENT_ROOT'];
-
 //check PHP Variables in php info.php file
 
 switch($server_environment){
@@ -54,7 +53,7 @@ case 'live':
 	define('DB_URL',"http://localhost:3000");
 	define('NAMESPACE_DB',"twelthdoorV2");	
 	define('DEBUG',true);
-	define('DOC_ROOT',$doc . '/v2/services/duosoftware.profile.service/');
+	define('DOC_ROOT',$doc . '/12thdoor/duosoftware.profile.service/');
 	define('CONTRACTS', DOC_ROOT . 'contracts/');
 	define('CONTROLLERS',DOC_ROOT . 'controllers/');
 	define('MODELS', DOC_ROOT . 'models/');	

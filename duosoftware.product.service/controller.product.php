@@ -25,12 +25,12 @@ switch($view){
 		break;
 		
 		// POST	/twelthdoor/saveProduct
-	case "insertProduct":
+	case "insert":
 		$postString = file_get_contents('php://input');		
 		$handler->insert($postString);
 		break;
 		
-	case "updateProduct":
+	case "update":
 		$postString = file_get_contents('php://input');
 		$handler->update($postString);
 		break;

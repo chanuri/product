@@ -3,7 +3,7 @@
 class activityAndComment
 {
 	
-	public $profileCode;
+// 	public $profileCode;
 	public $profileID;
 	public $logID;
 	public $type;  //Comment/Activity

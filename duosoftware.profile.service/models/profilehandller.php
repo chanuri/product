@@ -1,12 +1,14 @@
 <?php
 include_once 'config.php';
 require_once (CONTRACTS . 'profile.php');
+require_once (CONTRACTS . 'country.php');
 require_once (CONTRACTS . 'address.php');
 require_once (CONTRACTS . 'notes.php');
 require_once (CONTRACTS . 'activityAndComment.php');
 require_once (CONTRACTS . 'profileIncrement.php');
 class profilehandller extends HttpResponse {
 	public $dbtablename = "ProfileMaster";
+	public $dbcountrytablename = "CountryMaster";
 	public $profileIncrementtb = "profileInc";
 	public $profileActivityttb = "ProfileLog";
 	public function getAll($skip, $take, $orderby, $IsAscending) {
@@ -87,22 +89,25 @@ class profilehandller extends HttpResponse {
 		$input = json_decode ( $jsonstring, TRUE );
 		$profile = $this->convertToProfileObject ( $input );
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbtablename, securityToken );
-		$newprofileCode = "";
-		if (empty ( $profile->profileCode )) {
-			$d = $profile->profileName;
-			$newprofileCode = $this->generateProfileCode ( $d );
-		}
 		
-		if (empty ( $newprofileCode )) {
-			$statusCode = 404;
-			$rawData = array (
-					'error' => 'error has occured while generating profile code' 
-			);
-			$this->publishResponse ( $rawData, 'application/json', $statusCode );
-		}
 		
-		$profile->profileCode = $newprofileCode;
-		$profile->profileID = "-888";
+// 		$newprofileCode = "";
+// 		if (empty ( $profile->profileCode )) {
+// 			$d = $profile->profileName;
+// 			$newprofileCode = $this->generateProfileCode ( $d );
+			
+// 			if (empty ( $newprofileCode )) {
+// 				$statusCode = 404;
+// 				$rawData = array (
+// 						'error' => 'error has occured while generating profile code' 
+// 				);
+// 				$this->publishResponse ( $rawData, 'application/json', $statusCode );
+// 			} else {
+// 				$profile->profileCode = $newprofileCode;
+// 			}
+// 		}
+		
+		$profile->profileID = "-999";
 		$rawData = $client->store ()->byKeyField ( "profileID" )->andStore ( $profile );
 		
 		if (empty ( $rawData )) {
@@ -118,7 +123,7 @@ class profilehandller extends HttpResponse {
 		} else {
 			if (isset ( $input ["profileLog"] )) {
 				$activityObj = $this->convertToActivityObject ( $input ["profileLog"] );
-				$activityObj->profileCode = $profile->profileCode;
+// 				$activityObj->profileCode = $profile->profileCode;
 				$activityObj->profileID = $rawData->Data [0]->ID;
 				$activityRowData = $this->saveToProfileActivitytoOjectStore ( $activityObj ); // successfully saved profile id profile Object
 				
@@ -244,11 +249,12 @@ class profilehandller extends HttpResponse {
 		$outobject->profileName = $input ["profileName"];
 		$outobject->firstName = $input ["firstName"];
 		$outobject->lastName = $input ["lastName"];
-		$outobject->name = $input ["name"];
+// 		$outobject->name = $input ["name"];
 		$outobject->phone = $input ["phone"];
 		$outobject->mobile = $input ["mobile"];
+		$outobject->fax = $input ["fax"];
 		$outobject->website = $input ["website"];
-		$outobject->adminMail = $input ["adminMail"];
+// 		$outobject->adminMail = $input ["adminMail"];
 		$outobject->billingAddress = $input ["billingAddress"];
 		$outobject->shippingAddress = $input ["shippingAddress"];
 		$outobject->deleteStatus = $input ["deleteStatus"];
@@ -256,7 +262,7 @@ class profilehandller extends HttpResponse {
 		$outobject->favouriteStarNo = $input ["favouriteStarNo"];
 		$outobject->notes = $input ["notes"];
 		$outobject->status = $input ["status"];
-		$outobject->tag = $input ["tag"];
+// 		$outobject->tag = $input ["tag"];
 		$outobject->lastTranDate = $input ["lastTranDate"];
 		// chanuri Added
 		$outobject->createDate = $input ["createDate"];
@@ -285,11 +291,19 @@ class profilehandller extends HttpResponse {
 		
 		return $activityObj;
 	}
+	public function convertToCountryObject($input) {
+		$outobject = new country ();
+		
+		$outobject->name = $input ["Name"];
+		$outobject->code = $input ["Code"];
+		
+		return $outobject;
+	}
 	public function saveToProfileActivity($jsonstring) {
 		$input = json_decode ( $jsonstring, TRUE );
 		$activity = $this->convertToActivityObject ( $input );
 		if (empty ( $activity->logID )) {
-			$activity->logID = "-888";
+			$activity->logID = "-999";
 		}
 		$rawData = $this->saveToProfileActivitytoOjectStore ( $activity );
 		
@@ -306,6 +320,114 @@ class profilehandller extends HttpResponse {
 	public function saveToProfileActivitytoOjectStore($proObj) {
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->profileActivityttb, securityToken );
 		return $client->store ()->byKeyField ( "logID" )->andStore ( $proObj );
+	}
+	public function insertCountries($jsonstring) {
+		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbcountrytablename, securityToken );
+		$input = json_decode ( $jsonstring, TRUE );
+		
+		if (is_array ( $input )) {
+			foreach ( $input as $value ) {
+				$country = new Country ();
+				$country = $this->convertToCountryObject ( $value );
+				$country->countryID = "-999";
+				$rawData = $client->store ()->byKeyField ( "countryID" )->andStore ( $country );
+				
+				if (empty ( $rawData )) {
+					$rawData = array (
+							'error' => 'error has occured while saving country data of ' . $country ["name"] 
+					);
+				} else if ($rawData->IsSuccess == false) {
+					$rawData = array (
+							'error' => 'error has occured while saving country data of ' . $country ["name"] 
+					);
+				}
+			}
+			$statusCode = 200;
+		} else {
+			$country = new Country ();
+			$country = $this->convertToCountryObject ( $input );
+			$country->countryID = "-999";
+			$rawData = $client->store ()->byKeyField ( "countryID" )->andStore ( $country );
+			
+			if (empty ( $rawData )) {
+				$statusCode = 404;
+				$rawData = array (
+						'error' => 'error has occured while saving country data' 
+				);
+			} else if ($rawData->IsSuccess == false) {
+				$statusCode = 404;
+				$rawData = array (
+						'error' => 'error has occured while saving country data' 
+				);
+			} else {
+				$statusCode = 200;
+			}
+		}
+		
+		$this->publishResponse ( $rawData, 'application/json', $statusCode );
+	}
+	public function updateCountry($jsonstring) {
+		$country = new Country ();
+		$input = json_decode ( $jsonstring, TRUE );
+		$country = $this->convertToCountryObject ( $input );
+		
+		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbcountrytablename, securityToken );
+		
+		$rawData = $client->store ()->byKeyField ( "countryID" )->andStore ( $country );
+		
+		if (empty ( $rawData )) {
+			$statusCode = 404;
+			$rawData = array (
+					'error' => 'error has occured while updating profile' 
+			);
+		} else {
+			$statusCode = 200;
+		}
+		
+		$this->publishResponse ( $rawData, 'application/json', $statusCode );
+	}
+	public function getAllCountries($skip, $take, $orderby, $IsAscending) {		
+		
+		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbcountrytablename, securityToken );
+		
+		$client->get ()->skip ( $skip );
+		$client->get ()->take ( $take );
+		
+		if ($IsAscending) {
+			$client->get ()->orderBy ( $orderby );
+		} else {
+			$client->get ()->orderByDsc ( $orderby );
+		}
+		
+		$rawData = $client->get ()->all ();
+		
+		if (empty ( $rawData )) {
+			$statusCode = 404;
+			$rawData = array (
+					'error' => 'Not found!' 
+			);
+		} else {
+			$statusCode = 200;
+		}
+		
+		$this->publishResponse ( $rawData, 'application/json', $statusCode );
+	}
+	public function getCountriesJson() {
+	
+		$path = file_get_contents(CONTRACTS . 'Countries.json');
+		$json = json_decode($path, true);
+	
+		$rawData = $json;
+		if (empty ( $rawData )) {
+			$statusCode = 404;
+			$rawData = array (
+					'error' => 'Not found!'
+			);
+		} else {
+			$statusCode = 200;
+		}
+	
+		$this->publishResponse ( $rawData, 'application/json', $statusCode );
 	}
 }
 

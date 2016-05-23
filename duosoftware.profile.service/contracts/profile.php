@@ -10,19 +10,20 @@ Class Profile
 	public $profileName;
 	public $firstName;
 	public $lastName;
-	public $name;
+// 	public $name;
 	public $phone;
 	public $mobile;
+	public $fax;
 	public $website;
-	public $adminMail;
-	public $billingAddress; // Address Type
-	public $shippingAddress; // Address Type
+// 	public $adminMail;
+	public $billingAddress = array(); // Address Type
+	public $shippingAddress = array(); // Address Type
 	public $deleteStatus;
 	public $favouriteStar;	
 	public $favouriteStarNo;
-	public $notes;// Notes Type
+	public $notes = array(); // Notes Type
 	public $status;
-	public $tag;		
+// 	public $tag;		
 	public $lastTranDate;	
 	public $createDate;
 	public $modifyDate;
