@@ -34,12 +34,11 @@ class profilehandller extends HttpResponse {
 		$this->publishResponse ( $rawData, 'application/json', $statusCode );
 	}
 	public function getAllByQuery($skip, $take, $orderby, $jsonstring, $IsAscending) {
-		
 		$query = json_decode ( $jsonstring, TRUE );
 		
 		$query1 = "select * from ProfileMaster where " . $query ["where"] . " ";
-		//$query1 = "select * from ProfileMaster where " . $jsonstring . " ";
-		//echo $query1;
+		// $query1 = "select * from ProfileMaster where " . $jsonstring . " ";
+		// echo $query1;
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbtablename, securityToken );
 		
 		$client->get ()->skip ( $skip );
@@ -117,24 +116,21 @@ class profilehandller extends HttpResponse {
 					'error' => 'error has occured while saving profile' 
 			);
 		} else {
-// 			if (isset ( $input ["profileLog"] )) {
+			if (isset ( $input ["profileLog"] )) {
+				$activityObj = $this->convertToActivityObject ( $input ["profileLog"] );
+				$activityObj->profileCode = $profile->profileCode;
+				$activityObj->profileID = $rawData->Data [0]->ID;
+				$activityRowData = $this->saveToProfileActivitytoOjectStore ( $activityObj ); // successfully saved profile id profile Object
 				
-// 			} else
-// 				$statusCode = 200;
-			
-			$activityObj = $this->convertToActivityObject ( $input ["profileLog"] );
-			$activityObj->profileCode = $profile->profileCode;
-			$activityObj->profileID = $rawData->Data [0]->ID;
-			$activityRowData = $this->saveToProfileActivitytoOjectStore ( $activityObj ); // successfully saved profile id profile Object
-			
-			if (empty ( $activityRowData )) {	
-				$statusCode = 404;
-				$activityRowData = array (
-						'error' => 'error has occured while saving activity'
-				);
+				if (empty ( $activityRowData )) {
+					$statusCode = 404;
+					$activityRowData = array (
+							'error' => 'error has occured while saving activity' 
+					);
+				} else
+					$statusCode = 200;
 			} else
 				$statusCode = 200;
-			
 		}
 		
 		$this->publishResponse ( $rawData, 'application/json', $statusCode );
@@ -238,7 +234,6 @@ class profilehandller extends HttpResponse {
 		
 		return $newprofilecode;
 	}
-	
 	public function convertToProfileObject($input) {
 		$outobject = new profile ();
 		
@@ -271,7 +266,6 @@ class profilehandller extends HttpResponse {
 		
 		return $outobject;
 	}
-	
 	public function convertToActivityObject($input) {
 		$activityObj = new activityAndComment ();
 		
