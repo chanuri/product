@@ -132,7 +132,7 @@ class producthandller extends HttpResponse
 		{
 			$activityObj= $this->convertToActivityObject($input["productLog"]);				
 			$activityObj->productCode = $product->productCode;
-			$activityObj->productID =$rawData->Data[0]->ID;
+			$activityObj->productID =$rawData->ID;
 			$activityObj->logID="-888";
 			$activityRowData = $this->saveToProductActivitytoOjectStore($activityObj); // successfully saved product id product Object
 			
