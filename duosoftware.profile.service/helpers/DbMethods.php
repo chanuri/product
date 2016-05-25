@@ -136,7 +136,7 @@ class StoreModifier{
 		$this->osClient = $osClient;
 		$this->wsInvoker = new WsInvoker(DB_URL . "/". $this->osClient->getNamespace() . "/". $this->osClient->getClass() . "/");
 		$this->wsInvoker->addHeader("securityToken", $this->osClient->getToken());
-		$this->wsInvoker->addHeader("log", "log");
+// 		$this->wsInvoker->addHeader("log", "log");
 	}
 
 	public function byKeyField($kf){
