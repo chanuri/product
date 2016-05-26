@@ -1,0 +1,6 @@
+RewriteEngine On 
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+
+RewriteRule ^(.*)/(.*)/(.*)?$ %{ENV:BASE}controller.$1.php?view=$2&$3 [QSA,L]
+RewriteRule ^(.*)/(.*)$ %{ENV:BASE}controller.$1.php?view=$2 [QSA,L]

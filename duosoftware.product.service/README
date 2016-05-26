@@ -1,0 +1,47 @@
+Version - "6.0.0.2"
+// http://localhost:8012/PHP/TwelthDoor/duosoftware.product.service/product/
+// GET: /product/getAll/?skip=1&take=2&order=asc
+// GET  /accounts/getDataByQuery/?skip=1&take=2&query=?
+// GET	/accounts/getAll/?skip=1&take=2&order=asc
+// POST	/accounts/insert
+// GET	/accounts/getById/?id=1
+// POST /saveProduct
+// GET	/accounts/getByaccountNo/?accountno=?
+// GET	/accounts/delete/?id=?
+
+
+
+http://localhost:8012/PHP/duosoftware.twelthdoor.service/product/saveProduct
+Insert Json = >
+
+class Product
+	{
+		"productID":"",
+		"productCode":"",
+		"productCategory":"c",
+		"productUnit":"1",	
+		"productName":"TEST product",
+		"uploadBrochure":"",
+		"uploadImages":"",
+		"baseCurrency":"1",
+		"brand":"1",
+		"costPrice":"1",
+		"customFields":"1",
+		"date":"",
+		"deleteStatus":"",
+		"description":"",
+		"favouriteStar":"",
+		"favouriteStarNo":"",
+		"inventory":"",
+		"productPrice":"",
+		"productTax":"",
+		"progressShow":"",
+		"status":"",
+		"stockLevel":"1",
+		"tags":"",		
+		"todayDate":"1",		
+		"createDate":"",
+		"modifyDate":"",
+		"createUser":"",
+		"modifyUser":""
+	}
