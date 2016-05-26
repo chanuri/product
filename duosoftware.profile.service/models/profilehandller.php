@@ -22,7 +22,7 @@ class profilehandller extends HttpResponse {
 		} else {
 			$client->get ()->orderByDsc ( $orderby );
 		}
-		$query1 = "select * from ".$dbtablename." where profileClass='".$class."'";
+		$query1 = "select * from ".$this->dbtablename." where profileClass='".$class."'";
 		//$rawData = $client->get ()->all ();
 		$rawData = $client->get ()->byFiltering( $query1 );
 		// //$rawData=array('testNo' => '1');
@@ -40,7 +40,7 @@ class profilehandller extends HttpResponse {
 	public function getAllByQuery($skip, $take,$class ,$orderby, $jsonstring, $IsAscending) {
 		$query = json_decode ( $jsonstring, TRUE );
 		
-		$query1 = "select * from ProfileMaster where " . $query ["where"] . " AND profileClass='".$class."'";
+		$query1 = "select * from ".$this->dbtablename." where " . $query ["where"] . " AND profileClass='".$class."'";
 		// $query1 = "select * from ProfileMaster where " . $jsonstring . " ";
 		 //echo $query1;
 		
