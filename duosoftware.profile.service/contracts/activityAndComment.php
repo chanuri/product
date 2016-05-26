@@ -1,8 +1,7 @@
 <?php
 
 class activityAndComment
-{
-	
+{	
 // 	public $profileCode;
 	public $profileID;
 	public $logID;

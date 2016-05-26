@@ -11,7 +11,8 @@ class profilehandller extends HttpResponse {
 	public $dbcountrytablename = "CountryMaster";
 	public $profileIncrementtb = "profileInc";
 	public $profileActivityttb = "ProfileLog";
-	public function getAll($skip, $take, $orderby, $IsAscending) {
+	
+	public function getAll($skip, $take, $class,$orderby, $IsAscending) {
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbtablename, securityToken );
 		$client->get ()->skip ( $skip );
 		$client->get ()->take ( $take );
@@ -21,8 +22,9 @@ class profilehandller extends HttpResponse {
 		} else {
 			$client->get ()->orderByDsc ( $orderby );
 		}
-		
-		$rawData = $client->get ()->all ();
+		$query1 = "select * from ".$dbtablename." where profileClass='".$class."'";
+		//$rawData = $client->get ()->all ();
+		$rawData = $client->get ()->byFiltering( $query1 );
 		// //$rawData=array('testNo' => '1');
 		if (empty ( $rawData )) {
 			$statusCode = 404;
@@ -35,21 +37,24 @@ class profilehandller extends HttpResponse {
 		
 		$this->publishResponse ( $rawData, 'application/json', $statusCode );
 	}
-	public function getAllByQuery($skip, $take, $orderby, $jsonstring, $IsAscending) {
+	public function getAllByQuery($skip, $take,$class ,$orderby, $jsonstring, $IsAscending) {
 		$query = json_decode ( $jsonstring, TRUE );
 		
-		$query1 = "select * from ProfileMaster where " . $query ["where"] . " ";
+		$query1 = "select * from ProfileMaster where " . $query ["where"] . " AND profileClass='".$class."'";
 		// $query1 = "select * from ProfileMaster where " . $jsonstring . " ";
-		// echo $query1;
+		 //echo $query1;
+		
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbtablename, securityToken );
 		
 		$client->get ()->skip ( $skip );
 		$client->get ()->take ( $take );
-		$rawData = $client->get ()->byFiltering ( $query1 );
+		
 		if ($IsAscending)
 			$client->get ()->orderBy ( $orderby );
 		else
 			$client->get ()->orderByDsc ( $orderby );
+		
+		$rawData = $client->get ()->byFiltering ( $query1 );
 		
 		if (empty ( $rawData )) {
 			$statusCode = 404;
