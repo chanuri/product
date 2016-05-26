@@ -3,7 +3,7 @@ include_once 'config.php';
 require_once (CONTRACTS . 'profile.php');
 require_once (CONTRACTS . 'country.php');
 require_once (CONTRACTS . 'address.php');
-require_once (CONTRACTS . 'notes.php');
+//require_once (CONTRACTS . 'notes.php');
 require_once (CONTRACTS . 'activityAndComment.php');
 require_once (CONTRACTS . 'profileIncrement.php');
 class profilehandller extends HttpResponse {
@@ -84,6 +84,7 @@ class profilehandller extends HttpResponse {
 	 *
 	 * }
 	 */
+
 	public function insert($jsonstring) {
 		$profile = new profile ();
 		$input = json_decode ( $jsonstring, TRUE );
@@ -281,7 +282,7 @@ class profilehandller extends HttpResponse {
 		}
 		
 		$outobject->favouriteStarNo = $input ["favouriteStarNo"];
-		$outobject->notes = $input ["notes"];
+		//$outobject->notes = $input ["notes"];
 		$outobject->status = $input ["status"];
 		// $outobject->tag = $input ["tag"];
 		$outobject->lastTranDate = $input ["lastTranDate"];
@@ -296,7 +297,7 @@ class profilehandller extends HttpResponse {
 	public function convertToActivityObject($input) {
 		$activityObj = new activityAndComment ();
 		
-		$activityObj->profileCode = $input ["profileCode"];
+// 		$activityObj->profileCode = $input ["profileCode"];
 		$activityObj->profileID = $input ["profileID"];
 		$activityObj->logID = $input ["logID"];
 		$activityObj->type = $input ["type"];

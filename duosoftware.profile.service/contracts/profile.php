@@ -21,7 +21,7 @@ Class Profile
 	public $deleteStatus;
 	public $favouriteStar;	
 	public $favouriteStarNo;
-	public $notes = array(); // Notes Type
+	//public $notes = array(); // Notes Type
 	public $status;
 // 	public $tag;		
 	public $lastTranDate;	

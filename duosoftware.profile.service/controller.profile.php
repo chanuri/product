@@ -60,7 +60,7 @@ switch ($view) {
 		$postString = file_get_contents ( 'php://input' );
 		$handler->updateCountry ( $postString );
 		break;
-	
+	// / getAllCountries?skip=1&take=2&orderby=?&isAscending=true
 	case "getAllCountries" :
 		$skip = $_GET ["skip"];
 		$take = $_GET ["take"];
@@ -74,7 +74,7 @@ switch ($view) {
 		$handler->getAllCountries ( $skip, $take, $orderby, $isAscending );
 		break;
 	
-	case "getCountriesJson" :
+	case "getCountries" :
 		$handler->getCountriesJson ();
 		break;
 	
