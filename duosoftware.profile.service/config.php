@@ -10,7 +10,7 @@
 	
 define('VERSION',"6.0.0.2");
 ini_set('display_errors', '1');
-$server_environment = "local"; //local/live
+$server_environment = "live"; //local/live
 
 
 $doc= $_SERVER['DOCUMENT_ROOT'];
