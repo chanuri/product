@@ -436,7 +436,7 @@ class profilehandller extends HttpResponse {
 	public function getCountriesJson() {
 		$path = file_get_contents ( CONTRACTS . 'Countries.json' );
 		$json = json_decode ( $path, true );
-		
+		//echo $json;
 		$rawData = $json;
 		if (empty ( $rawData )) {
 			$statusCode = 404;

@@ -51,28 +51,28 @@ switch ($view) {
 		$handler->saveToProfileActivity ( $postString );
 		break;
 	
-	case "insertCountries" :
-		$postString = file_get_contents ( 'php://input' );
-		$handler->insertCountries ( $postString );
-		break;
+// 	case "insertCountries" :
+// 		$postString = file_get_contents ( 'php://input' );
+// 		$handler->insertCountries ( $postString );
+// 		break;
 	
-	case "updateCountry" :
-		$postString = file_get_contents ( 'php://input' );
-		$handler->updateCountry ( $postString );
-		break;
-	// / getAllCountries?skip=1&take=2&orderby=?&isAscending=true
-	case "getAllCountries" :
-		$skip = $_GET ["skip"];
-		$take = $_GET ["take"];
-		$orderby = $_GET ['orderby'];
+// 	case "updateCountry" :
+// 		$postString = file_get_contents ( 'php://input' );
+// 		$handler->updateCountry ( $postString );
+// 		break;
+// 	// / getAllCountries?skip=1&take=2&orderby=?&isAscending=true
+// 	case "getAllCountries" :
+// 		$skip = $_GET ["skip"];
+// 		$take = $_GET ["take"];
+// 		$orderby = $_GET ['orderby'];
 		
-		if (isset ( $_GET ['isAscending'] )) {
-			$isAscending = $_GET ['isAscending'];
-		} else {
-			$isAscending = false;
-		}
-		$handler->getAllCountries ( $skip, $take, $orderby, $isAscending );
-		break;
+// 		if (isset ( $_GET ['isAscending'] )) {
+// 			$isAscending = $_GET ['isAscending'];
+// 		} else {
+// 			$isAscending = false;
+// 		}
+// 		$handler->getAllCountries ( $skip, $take, $orderby, $isAscending );
+// 		break;
 	
 	case "getCountries" :
 		$handler->getCountriesJson ();
