@@ -10,8 +10,8 @@ switch($view){
 	case "getAll":
 		$skip = $_GET["skip"];
 		$take = $_GET["take"];
-		$order = $_GET['orderby'];
-		$Isascending = $_GET['Isascending'];	
+		$order = $_GET["orderby"];
+		$Isascending = $_GET["Isascending"];	
 		$handler->getAll($skip, $take,$order,$Isascending);
 		break;		
 	//  GET/twelthdoor/getAllByQuery?skip=1&take=2&query=?	
@@ -45,7 +45,14 @@ switch($view){
 		$postString = file_get_contents('php://input');		
 		$handler->saveToProductActivity($postString);
 		break;
-	
+		//getActivity?produtID=0&skip=0&take=10
+	case "getActivity":		
+		$productid = $_GET['produtID'];
+		$skip = $_GET["skip"];
+		$take = $_GET["take"];
+		$handler->getActivity($productid,$skip,$take);
+		break;
+		
 	case "" :
 		header('HTTP/1.1 404 Not Found');
 		break;

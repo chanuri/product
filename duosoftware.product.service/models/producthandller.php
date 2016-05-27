@@ -42,7 +42,7 @@ class producthandller extends HttpResponse
 	 {
 	 	  $query= json_decode( $jsonstring, TRUE );
 	  
- 	 	  $query1 = "select * from ProductMaster where ".$query["where"]." ";
+ 	 	  $query1 = "select * from ".$this->dbtablename." where ".$query["where"]." ";
 	 	 // echo $query1;
 	 	  $client=ObjectStoreClient::WithNamespace(DuoWorldCommon::GetHost(),$this->dbtablename,securityToken);
 		   
@@ -97,12 +97,14 @@ class producthandller extends HttpResponse
 			//$rawData = array('error' => 'error has occured while saving product');
 		} else
 		{
-			$activityObj= $this->convertToActivityObject($input["productLog"]);
-			
-			$activityObj->productCode = $product->productCode;
-		    $activityObj->productID =$rawData->ID;			
-			$activityRowData = $this->saveToProductActivitytoOjectStore($activityObj); // successfully saved product id product Object 
-			
+			if(!empty($input["productLog"]))
+			{
+				$activityObj= $this->convertToActivityObject($input["productLog"]);
+				
+				$activityObj->productCode = $product->productCode;
+			    $activityObj->productID =$rawData->ID;			
+				$activityRowData = $this->saveToProductActivitytoOjectStore($activityObj); // successfully saved product id product Object 
+			}
 // 			if(empty(($rawData->statusCode==404)) {
 // 				$statusCode = 404;
 // 				$activityRowData = array('error' => 'error has occured while saving activity');
@@ -388,6 +390,26 @@ class producthandller extends HttpResponse
  			//var_dump($proObj);
  			return $client->store()->byKeyField("logID")->andStore($proObj); 		
  	}
+ 	
+ 	public function getActivity($productid,$skip,$take)
+ 	{		 	
+ 		$client=ObjectStoreClient::WithNamespace(DuoWorldCommon::GetHost(),$this->productActivityttb,securityToken);
+ 		$query1 = "select * from ".$this->productActivityttb." where productID='".$productid."' ";
+ 		$client->get()->skip($skip);
+ 		$client->get()->take($take); 	
+ 		$client->get()->orderBy("lastTranDate");
+ 		$rawData= $client->get()->byFiltering($query1);
+ 		if(empty($rawData)) 
+ 		{
+ 		  	$statusCode = 404;
+ 		  	$rawData = array('error' => 'Not found!');
+ 		} else
+ 		  	$statusCode = 200;
+ 	
+ 		$this->publishResponse($rawData,'application/json',$statusCode);
+ 		  	 
+ 	}
+ 	
  	
 } 
 
