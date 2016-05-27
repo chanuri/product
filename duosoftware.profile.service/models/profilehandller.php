@@ -160,7 +160,7 @@ class profilehandller extends HttpResponse {
 					'error' => 'error has occured while updating profile' 
 			);
 		} else {
-// 			if (isset ( $input ["profileLog"] )) {
+			if (isset ( $input ["profileLog"] )) {
 				$activityObj = $this->convertToActivityObject ( $input ["profileLog"] );
 				$activityObj->profileCode = $profile->profileCode;
 				$activityObj->profileID = $rawData->Data [0]->ID;
@@ -174,8 +174,8 @@ class profilehandller extends HttpResponse {
 					);
 				} else
 					$statusCode = 200;
-// 			} else
-// 				$statusCode = 200;
+		} else
+				$statusCode = 200;
 		}
 		
 		$this->publishResponse ( $rawData, 'application/json', $statusCode );
