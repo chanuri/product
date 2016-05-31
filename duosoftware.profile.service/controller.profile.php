@@ -36,6 +36,7 @@ switch ($view) {
 		$handler->insert ( $postString );
 		break;
 	
+	// POST /12thdoor/duosoftware.profile.service/profile/update
 	case "update" :
 		$postString = file_get_contents ( 'php://input' );
 		$handler->update ( $postString );
@@ -51,17 +52,20 @@ switch ($view) {
 		$postString = file_get_contents ( 'php://input' );
 		$handler->saveActivityAndComment ( $postString );
 		break;
-	//saveActivity
+	
+	// POST /12thdoor/duosoftware.profile.service/profile/updateActivity
 	case "updateActivity" :
 		$postString = file_get_contents ( 'php://input' );
 		$handler->updateActivityAndComment ( $postString );
 		break;
-	//getActivity?profilekey
+	
+	// GET/twelthdoor/getAllByQuery?profilekey=<profileID>
 	case "getActivity" :
 		$id = $_GET ['profilekey'];
 		$handler->getActivity ( $id );
 		break;
-	//updateLastTransaction/   {profileID:0}
+	
+	// POST /12thdoor/duosoftware.profile.service/profile/updateLastTransaction send the profileID
 	case "updateLastTransaction" :
 		$postString = file_get_contents ( 'php://input' );
 		$handler->updateLastTransaction ( $postString );
