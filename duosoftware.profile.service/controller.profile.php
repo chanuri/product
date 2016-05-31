@@ -67,7 +67,7 @@ switch ($view) {
 	
 	// POST /12thdoor/duosoftware.profile.service/profile/updateLastTransaction send the profileID
 	case "updateLastTransaction" :
-		$postString = file_get_contents ( 'php://input' );
+		$postString = file_get_contents ( 'php://input' );		
 		$handler->updateLastTransaction ( $postString );
 		break;
 	

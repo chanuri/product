@@ -378,7 +378,7 @@ class profilehandller extends HttpResponse {
 		}
 		
 		$outobject->favouriteStarNo = $input ["favouriteStarNo"];
-		$outobject->notes = $input ["notes"];
+// 		$outobject->notes = $input ["notes"];
 		$outobject->status = $input ["status"];
 		// $outobject->tag = $input ["tag"];
 		$outobject->lastTranDate = $input ["lastTranDate"];
