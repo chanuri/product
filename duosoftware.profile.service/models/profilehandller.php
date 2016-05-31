@@ -177,7 +177,7 @@ class profilehandller extends HttpResponse {
 	}
 	public function saveActivityAndComment($jsonString) {
 		$activityObj = new activityAndComment ();
-		$input = json_decode ( $jsonstring, TRUE );
+		$input = json_decode ( $jsonString, TRUE );
 		$activityObj = $this->convertToActivityObject ( $input );
 		$activityObj->logID = "-999";
 		$rawData = $this->saveProfileActivityToOjectStore ( $activityObj );
