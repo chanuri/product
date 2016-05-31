@@ -26,13 +26,13 @@ switch($server_environment){
 case 'local':
 	//Database name 
 	//http://test.12thdoor.com:3000/
-	define('DB_URL',"http://test.12thdoor.com:3000");
+	define('DB_URL',"http://192.168.1.20:3000");
 	define('NAMESPACE_DB',"twelthdoorV2");
 	
 	define('DEBUG',true);
 	
 ///PHP/TwelthDoor/duosoftware.product.service/
-	define('DOC_ROOT',$doc . '/PHP/TwelthDoor/duosoftware.product.service/');
+	define('DOC_ROOT',$doc . '/12thdoor/duosoftware.product.service/');
 	define('CONTRACTS', DOC_ROOT . 'contracts/');
 	define('CONTROLLERS',DOC_ROOT . 'controllers/');
 	define('MODELS', DOC_ROOT . 'models/');	
