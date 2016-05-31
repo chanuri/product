@@ -6,6 +6,7 @@ Class Profile
 	public $profileClass;//Customer,//Supplier
 	public $profileType;// {Customer--> Company, Individual }{Supplier-> default}
 	public $profileCategory;//{Default}
+	public $profileCode;
 	public $email;
 	public $profileName;
 	public $firstName;

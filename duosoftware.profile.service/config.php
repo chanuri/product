@@ -25,7 +25,7 @@ case 'local':
 	define('DB_URL',"http://192.168.1.20:3000");
 	define('NAMESPACE_DB',"twelthdoorV2");	
 	define('DEBUG',true);
-	define('DOC_ROOT',$doc . '/PHP/TwelthDoor/duosoftware.profile.service/');
+	define('DOC_ROOT',$doc . '/12thdoor/duosoftware.profile.service/');
 	define('CONTRACTS', DOC_ROOT . 'contracts/');
 	define('CONTROLLERS',DOC_ROOT . 'controllers/');
 	define('MODELS', DOC_ROOT . 'models/');	

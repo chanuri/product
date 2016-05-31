@@ -1,7 +1,7 @@
 <?php
 
 include_once(HELPERS.'HttpRequest.php');
-
+include_once(HELPERS.'result.php');
 class RequestBody {
 	public $Parameters;
 	public $Query;
@@ -144,11 +144,30 @@ class StoreModifier{
 		return $this;
 	}
 
+// 	public function andStore($so){
+// 		$req = $this->osClient->getRequest();
+// 		$req->Parameters->KeyProperty = $this->keyProp;
+// 		if (gettype($so) == "array"){
+
+// 			$req->Objects = $so;
+// 			unset($req->Object);
+// 			unset($req->Query);
+// 			unset($req->Special);
+// 		}
+// 		else{
+// 			$req->Object = $so;
+// 			unset($req->Objects);
+// 			unset($req->Query);
+// 			unset($req->Special);
+// 		}
+// 		$res = $this->wsInvoker->post("", $req);
+// 		return (isset($this->mapObj)) ? $this->wsInvoker->map($res, $this->mapObj) :   json_decode($res);
+// 	}
 	public function andStore($so){
 		$req = $this->osClient->getRequest();
 		$req->Parameters->KeyProperty = $this->keyProp;
 		if (gettype($so) == "array"){
-
+	
 			$req->Objects = $so;
 			unset($req->Object);
 			unset($req->Query);
@@ -161,9 +180,28 @@ class StoreModifier{
 			unset($req->Special);
 		}
 		$res = $this->wsInvoker->post("", $req);
-		return (isset($this->mapObj)) ? $this->wsInvoker->map($res, $this->mapObj) :   json_decode($res);
+		//$result=array('IsSuccess'=>false,'Message'=>'Error has occured.','ID'=>'','StatusCode'=>'404');
+		//echo $res;
+		//var_dump($res);
+		$result=new Result();
+		$result->isSuccess=false;
+		$result->message='Error has occured.';
+		$result->ID='';
+		$result->statusCode=404;
+		if(isset($res))
+		{
+			$out=json_decode($res);
+			//$result=array('IsSuccess'=>$out->IsSuccess,'Message'=>$out->Message,'ID'=>$out->Data[0]->ID,'StatusCode'=>$out->IsSuccess ==true?200:404);
+			$result->isSuccess=$out->IsSuccess;
+			$result->message=$out->Message;
+			$result->ID=$out->Data==null?'':$out->Data[0]->ID;
+			$result->statusCode=$out->IsSuccess ==true?200:404;
+		}
+	
+		//echo json_decode(json_encode($result));
+		return (isset($this->mapObj)) ? $this->wsInvoker->map($result, $this->mapObj) :$result;
+		//json_encode($result)
 	}
-
 	public function andStoreArray($so){
 		$req = $this->osClient->getRequest();
 		$req->Parameters->KeyProperty = $this->keyProp;

@@ -9,25 +9,25 @@ switch ($view) {
 	case "getAll" :
 		$skip = $_GET ["skip"];
 		$take = $_GET ["take"];
-		$class=$_GET['class'];
-		$orderby = $_GET ['orderby'];		
+		$class = $_GET ['class'];
+		$orderby = $_GET ['orderby'];
 		if (isset ( $_GET ['isAscending'] )) {
 			$isAscending = $_GET ['isAscending'];
 		} else {
 			$isAscending = false;
 		}
-		$handler->getAll( $skip, $take, $class,$orderby, $isAscending );
+		$handler->getAll ( $skip, $take, $class, $orderby, $isAscending );
 		break;
 	// GET/twelthdoor/getAllByQuery?skip=1&take=2&query=?
 	case "getAllByQuery" :
 		$skip = $_GET ["skip"];
 		$take = $_GET ["take"];
-		$class=$_GET['class'];
+		$class = $_GET ['class'];
 		$orderby = $_GET ['orderby'];
 		$isAscending = $_GET ['isAscending'];
 		$query = file_get_contents ( 'php://input' );
 		
-		$handler->getAllByQuery ( $skip, $take,$class, $orderby, $query, $isAscending );
+		$handler->getAllByQuery ( $skip, $take, $class, $orderby, $query, $isAscending );
 		break;
 	
 	// POST /12thdoor/duosoftware.profile.service/profile/insert
@@ -49,31 +49,46 @@ switch ($view) {
 	// saveToProfileActivity
 	case "saveActivity" :
 		$postString = file_get_contents ( 'php://input' );
-		$handler->saveToProfileActivity ( $postString );
+		$handler->saveActivityAndComment ( $postString );
+		break;
+	//saveActivity
+	case "updateActivity" :
+		$postString = file_get_contents ( 'php://input' );
+		$handler->updateActivityAndComment ( $postString );
+		break;
+	//getActivity?profilekey
+	case "getActivity" :
+		$id = $_GET ['profilekey'];
+		$handler->getActivity ( $id );
+		break;
+	//updateLastTransaction/   {profileID:0}
+	case "updateLastTransaction" :
+		$postString = file_get_contents ( 'php://input' );
+		$handler->updateLastTransaction ( $postString );
 		break;
 	
-// 	case "insertCountries" :
-// 		$postString = file_get_contents ( 'php://input' );
-// 		$handler->insertCountries ( $postString );
-// 		break;
+	// case "insertCountries" :
+	// $postString = file_get_contents ( 'php://input' );
+	// $handler->insertCountries ( $postString );
+	// break;
 	
-// 	case "updateCountry" :
-// 		$postString = file_get_contents ( 'php://input' );
-// 		$handler->updateCountry ( $postString );
-// 		break;
-// 	// / getAllCountries?skip=1&take=2&orderby=?&isAscending=true
-// 	case "getAllCountries" :
-// 		$skip = $_GET ["skip"];
-// 		$take = $_GET ["take"];
-// 		$orderby = $_GET ['orderby'];
-		
-// 		if (isset ( $_GET ['isAscending'] )) {
-// 			$isAscending = $_GET ['isAscending'];
-// 		} else {
-// 			$isAscending = false;
-// 		}
-// 		$handler->getAllCountries ( $skip, $take, $orderby, $isAscending );
-// 		break;
+	// case "updateCountry" :
+	// $postString = file_get_contents ( 'php://input' );
+	// $handler->updateCountry ( $postString );
+	// break;
+	// // / getAllCountries?skip=1&take=2&orderby=?&isAscending=true
+	// case "getAllCountries" :
+	// $skip = $_GET ["skip"];
+	// $take = $_GET ["take"];
+	// $orderby = $_GET ['orderby'];
+	
+	// if (isset ( $_GET ['isAscending'] )) {
+	// $isAscending = $_GET ['isAscending'];
+	// } else {
+	// $isAscending = false;
+	// }
+	// $handler->getAllCountries ( $skip, $take, $orderby, $isAscending );
+	// break;
 	
 	case "getCountries" :
 		$handler->getCountriesJson ();
