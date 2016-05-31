@@ -35,21 +35,19 @@ class profilehandller extends HttpResponse {
 		
 		$this->publishResponse ( $rawData, 'application/json', $statusCode );
 	}
-	public function getAllByQuery($skip, $take, $orderby, $jsonstring, $IsAscending) {
+	public function getAllByQuery($skip, $take, $orderby, $class, $jsonstring, $IsAscending) {
 		$query = json_decode ( $jsonstring, TRUE );
-		
-		$query1 = "select * from ProfileMaster where " . $query ["where"] . " ";
-		// $query1 = "select * from ProfileMaster where " . $jsonstring . " ";
-		// echo $query1;
+		$query1 = "select * from ProfileMaster where " . $query ["where"] . " and profileClass = '" . $class . "'";
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbtablename, securityToken );
-		
 		$client->get ()->skip ( $skip );
 		$client->get ()->take ( $take );
-		$rawData = $client->get ()->byFiltering ( $query1 );
+		
 		if ($IsAscending)
 			$client->get ()->orderBy ( $orderby );
 		else
 			$client->get ()->orderByDsc ( $orderby );
+		
+		$rawData = $client->get ()->byFiltering ( $query1 );
 		
 		if (empty ( $rawData )) {
 			$statusCode = 404;
@@ -157,7 +155,7 @@ class profilehandller extends HttpResponse {
 		} else {
 			if (isset ( $input ["profileLog"] )) {
 				$activityObj = $this->convertToActivityObject ( $input ["profileLog"] );
-// 				$activityObj->profileCode = $profile->profileCode;
+				// $activityObj->profileCode = $profile->profileCode;
 				$activityObj->logID = "-999";
 				$activityObj->profileID = $rawData->ID;
 				

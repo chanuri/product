@@ -16,7 +16,7 @@ switch ($view) {
 		} else {
 			$isAscending = false;
 		}
-		$handler->getAll ( $skip, $take, $class, $orderby, $isAscending );
+		$handler->getAll ( $skip, $take, $orderby, $class, $isAscending );
 		break;
 	// GET/twelthdoor/getAllByQuery?skip=1&take=2&query=?
 	case "getAllByQuery" :
@@ -27,7 +27,7 @@ switch ($view) {
 		$isAscending = $_GET ['isAscending'];
 		$query = file_get_contents ( 'php://input' );
 		
-		$handler->getAllByQuery ( $skip, $take, $class, $orderby, $query, $isAscending );
+		$handler->getAllByQuery ( $skip, $take, $orderby, $class, $query, $isAscending );
 		break;
 	
 	// POST /12thdoor/duosoftware.profile.service/profile/insert
