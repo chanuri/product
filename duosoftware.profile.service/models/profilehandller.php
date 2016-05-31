@@ -157,7 +157,7 @@ class profilehandller extends HttpResponse {
 		} else {
 			if (isset ( $input ["profileLog"] )) {
 				$activityObj = $this->convertToActivityObject ( $input ["profileLog"] );
-				$activityObj->profileCode = $profile->profileCode;
+				//$activityObj->profileCode = $profile->profileCode;
 				$activityObj->logID = "-999";
 				$activityObj->profileID = $rawData->ID;
 				
