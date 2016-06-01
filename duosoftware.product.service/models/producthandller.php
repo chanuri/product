@@ -344,7 +344,7 @@ class producthandller extends HttpResponse {
 	}
 	public function getActivity($productid, $skip, $take) {
 		$client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->productActivityttb, securityToken );
-		$query1 = "select * from " . $this->productActivityttb . " where productID='" . $productid . "' ";
+		$query1 = "select * from " . $this->productActivityttb . " where productID='" . $productid . "' and LOWER(status) = 'active'";
 		$client->get ()->skip ( $skip );
 		$client->get ()->take ( $take );
 		$client->get ()->orderBy ( "lastTranDate" );

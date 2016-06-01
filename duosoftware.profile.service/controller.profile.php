@@ -59,15 +59,17 @@ switch ($view) {
 		$handler->updateActivityAndComment ( $postString );
 		break;
 	
-	// GET/twelthdoor/getAllByQuery?profilekey=<profileID>
+	// GET/twelthdoor/getActivity?profileID=<profileID>&skip=1&take=2
 	case "getActivity" :
-		$id = $_GET ['profilekey'];
-		$handler->getActivity ( $id );
+		$id = $_GET ['profileID'];
+		$skip = $_GET ["skip"];
+		$take = $_GET ["take"];
+		$handler->getActivity ( $id, $skip, $take );
 		break;
 	
 	// POST /12thdoor/duosoftware.profile.service/profile/updateLastTransaction send the profileID
 	case "updateLastTransaction" :
-		$postString = file_get_contents ( 'php://input' );		
+		$postString = file_get_contents ( 'php://input' );
 		$handler->updateLastTransaction ( $postString );
 		break;
 	

@@ -259,8 +259,9 @@ class profilehandller extends HttpResponse {
 		
 		$this->publishResponse ( $rawData, 'application/json', $statusCode );
 	}
-	public function getActivity($profilekey) {
-		$query1 = "select * from ProfileMaster where profileID=" . $profilekey;
+	public function getActivity($profilekey, $skip, $take) {
+		// echo $this->profileActivityttb;
+		$query1 = "select * from " . $this->profileActivityttb . " where profileID=" . $profilekey . " and LOWER(status) = 'active'";
 		// $query1 = "select * from ProfileMaster where " . $jsonstring . " ";
 		// echo $query1;
 		// $client = ObjectStoreClient::WithNamespace ( DuoWorldCommon::GetHost (), $this->dbtablename, securityToken );
@@ -273,11 +274,15 @@ class profilehandller extends HttpResponse {
 		// $rawData = $client->get ()->all ();
 		// var_dump($rawData);
 		// $rawData = $client->get ()->bykey ( $profilekey );
+		$client->get ()->skip ( $skip );
+		$client->get ()->take ( $take );
+		$client->get ()->orderBy ( "lastTranDate" );
 		$rawData = $client->get ()->byFiltering ( $query1 );
+		// var_dump($rawData);
 		if (empty ( $rawData )) {
 			$statusCode = 404;
 			$rawData = array (
-					'error' => 'Not found!' 
+					'error' => 'Activity Data Not Found!' 
 			);
 		} else {
 			$statusCode = 200;
@@ -378,7 +383,7 @@ class profilehandller extends HttpResponse {
 		}
 		
 		$outobject->favouriteStarNo = $input ["favouriteStarNo"];
-// 		$outobject->notes = $input ["notes"];
+		// $outobject->notes = $input ["notes"];
 		$outobject->status = $input ["status"];
 		// $outobject->tag = $input ["tag"];
 		$outobject->lastTranDate = $input ["lastTranDate"];
@@ -454,7 +459,7 @@ class profilehandller extends HttpResponse {
 					$rawData = array (
 							'error' => 'error has occured while saving country data of ' . $country ["name"] 
 					);
-				} else if ($rawData->IsSuccess == false) {
+				} else if ($rawData->isSuccess == false) {
 					$rawData = array (
 							'error' => 'error has occured while saving country data of ' . $country ["name"] 
 					);
@@ -472,7 +477,7 @@ class profilehandller extends HttpResponse {
 				$rawData = array (
 						'error' => 'error has occured while saving country data' 
 				);
-			} else if ($rawData->IsSuccess == false) {
+			} else if ($rawData->isSuccess == false) {
 				$statusCode = 404;
 				$rawData = array (
 						'error' => 'error has occured while saving country data' 
